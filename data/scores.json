@@ -1,0 +1,18 @@
+{
+  "lastUpdated": "2025-04-10T18:30:00Z",
+  "tournamentStatus": "In Progress",
+  "currentRound": "Round 1",
+  "scores": {
+    "46046": { "name": "Scottie Scheffler", "score": -5, "thru": "F", "position": "T1" },
+    "28237": { "name": "Rory McIlroy", "score": -3, "thru": "F", "position": "T5" },
+    "46970": { "name": "Jon Rahm", "score": -4, "thru": "F", "position": "T3" },
+    "50525": { "name": "Viktor Hovland", "score": -2, "thru": "F", "position": "T10" },
+    "36689": { "name": "Brooks Koepka", "score": -3, "thru": "F", "position": "T5" },
+    "48081": { "name": "Xander Schauffele", "score": -5, "thru": "F", "position": "T1" },
+    "34046": { "name": "Jordan Spieth", "score": -1, "thru": "F", "position": "T15" },
+    "30925": { "name": "Dustin Johnson", "score": 0, "thru": "F", "position": "T25" },
+    "39977": { "name": "Patrick Cantlay", "score": -2, "thru": "F", "position": "T10" },
+    "47959": { "name": "Cameron Smith", "score": -4, "thru": "F", "position": "T3" },
+    "33448": { "name": "Justin Thomas", "score": -3, "thru": "F", "position": "T5" }
+  }
+}

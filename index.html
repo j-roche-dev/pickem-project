@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masters Pick'em 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Masters Tournament Pick'em</h1>
+            <nav>
+                <a href="#leaderboard" class="nav-link active">Leaderboard</a>
+                <a href="#updates" class="nav-link">Updates</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="section active">
+            <div class="section-header">
+                <h2>Leaderboard</h2>
+                <div class="last-updated">
+                    Last updated: <span id="last-update-time">Loading...</span>
+                </div>
+            </div>
+
+            <div class="tournament-status">
+                <div class="status-item">
+                    <span class="status-label">Current Round:</span>
+                    <span id="current-round">-</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Tournament Status:</span>
+                    <span id="tournament-status">-</span>
+                </div>
+            </div>
+
+            <div id="leaderboard-container">
+                <div class="loading">Loading leaderboard...</div>
+            </div>
+        </section>
+
+        <!-- Updates Section -->
+        <section id="updates" class="section">
+            <div class="section-header">
+                <h2>Pool Updates</h2>
+            </div>
+            <div id="updates-container">
+                <div class="loading">Loading updates...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Masters Pick'em Pool</p>
+        </div>
+    </footer>
+
+    <script src="js/leaderboard.js"></script>
+    <script src="js/updates.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

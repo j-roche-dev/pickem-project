@@ -1,0 +1,39 @@
+{
+  "year": 2025,
+  "participants": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "picks": [
+        { "golfer": "Scottie Scheffler", "golferId": "46046" },
+        { "golfer": "Rory McIlroy", "golferId": "28237" },
+        { "golfer": "Jon Rahm", "golferId": "46970" },
+        { "golfer": "Viktor Hovland", "golferId": "50525" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "picks": [
+        { "golfer": "Brooks Koepka", "golferId": "36689" },
+        { "golfer": "Xander Schauffele", "golferId": "48081" },
+        { "golfer": "Collin Morikawa", "golferId": "50525" },
+        { "golfer": "Jordan Spieth", "golferId": "34046" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "picks": [
+        { "golfer": "Dustin Johnson", "golferId": "30925" },
+        { "golfer": "Patrick Cantlay", "golferId": "39977" },
+        { "golfer": "Cameron Smith", "golferId": "47959" },
+        { "golfer": "Justin Thomas", "golferId": "33448" }
+      ]
+    }
+  ],
+  "scoringRules": {
+    "description": "Sum of best scores from your picked golfers",
+    "countBestN": 4
+  }
+}
