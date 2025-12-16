@@ -25,75 +25,65 @@ class Leaderboard {
     }
 
     async loadScores() {
-        // Try to fetch from Masters API first
-        try {
-            const apiScores = await this.fetchFromMastersAPI();
-            if (apiScores) {
-                this.scores = apiScores;
-                return;
-            }
-        } catch (error) {
-            console.log('Masters API not available, using fallback data');
-        }
-
-        // Fallback to local scores.json
+        // Load scores from local scores.json file
         const response = await fetch('data/scores.json');
         if (!response.ok) throw new Error('Failed to load scores');
         this.scores = await response.json();
     }
 
-    async fetchFromMastersAPI() {
-        // Masters.com API endpoint (this may need adjustment based on actual API)
-        // The Masters typically uses https://www.masters.com/en_US/scores/feeds/[year]/scores.json
-        // However, this might not be accessible due to CORS or may require specific timing
+    // COMMENTED OUT: Masters API fetching logic (using manual scores.json instead)
+    // async fetchFromMastersAPI() {
+    //     // Masters.com API endpoint (this may need adjustment based on actual API)
+    //     // The Masters typically uses https://www.masters.com/en_US/scores/feeds/[year]/scores.json
+    //     // However, this might not be accessible due to CORS or may require specific timing
 
-        const year = new Date().getFullYear();
-        const apiUrl = `https://www.masters.com/en_US/scores/feeds/${year}/scores.json`;
+    //     const year = new Date().getFullYear();
+    //     const apiUrl = `https://www.masters.com/en_US/scores/feeds/${year}/scores.json`;
 
-        try {
-            const response = await fetch(apiUrl, {
-                mode: 'cors',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+    //     try {
+    //         const response = await fetch(apiUrl, {
+    //             mode: 'cors',
+    //             headers: {
+    //                 'Accept': 'application/json'
+    //             }
+    //         });
 
-            if (!response.ok) return null;
+    //         if (!response.ok) return null;
 
-            const data = await response.json();
+    //         const data = await response.json();
 
-            // Transform Masters API data to our format
-            return this.transformMastersAPIData(data);
-        } catch (error) {
-            console.log('Could not fetch from Masters API:', error.message);
-            return null;
-        }
-    }
+    //         // Transform Masters API data to our format
+    //         return this.transformMastersAPIData(data);
+    //     } catch (error) {
+    //         console.log('Could not fetch from Masters API:', error.message);
+    //         return null;
+    //     }
+    // }
 
-    transformMastersAPIData(apiData) {
-        // This function transforms the Masters API response to our format
-        // Note: The actual API structure may vary - this is a best-guess implementation
+    // transformMastersAPIData(apiData) {
+    //     // This function transforms the Masters API response to our format
+    //     // Note: The actual API structure may vary - this is a best-guess implementation
 
-        const transformed = {
-            lastUpdated: new Date().toISOString(),
-            tournamentStatus: apiData.tournament?.status || 'In Progress',
-            currentRound: apiData.tournament?.round || 'Round 1',
-            scores: {}
-        };
+    //     const transformed = {
+    //         lastUpdated: new Date().toISOString(),
+    //         tournamentStatus: apiData.tournament?.status || 'In Progress',
+    //         currentRound: apiData.tournament?.round || 'Round 1',
+    //         scores: {}
+    //     };
 
-        if (apiData.player) {
-            apiData.player.forEach(player => {
-                transformed.scores[player.id] = {
-                    name: `${player.first_name} ${player.last_name}`,
-                    score: parseInt(player.total_strokes) || 0,
-                    thru: player.thru || 'F',
-                    position: player.current_position || '-'
-                };
-            });
-        }
+    //     if (apiData.player) {
+    //         apiData.player.forEach(player => {
+    //             transformed.scores[player.id] = {
+    //                 name: `${player.first_name} ${player.last_name}`,
+    //                 score: parseInt(player.total_strokes) || 0,
+    //                 thru: player.thru || 'F',
+    //                 position: player.current_position || '-'
+    //             };
+    //         });
+    //     }
 
-        return transformed;
-    }
+    //     return transformed;
+    // }
 
     calculateLeaderboard() {
         this.leaderboardData = this.picks.participants.map(participant => {
@@ -208,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
     leaderboard = new Leaderboard();
     leaderboard.init();
 
-    // Auto-refresh every 5 minutes during tournament
-    setInterval(() => {
-        leaderboard.refresh();
-    }, 5 * 60 * 1000);
+    // REMOVED: Auto-refresh (scores are manually updated via scores.json)
+    // setInterval(() => {
+    //     leaderboard.refresh();
+    // }, 5 * 60 * 1000);
 });
