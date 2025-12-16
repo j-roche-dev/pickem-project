@@ -19,15 +19,28 @@ class App {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+                e.stopPropagation();
+
+                // Save scroll position before navigation
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
                 const target = link.getAttribute('href').substring(1);
                 this.navigateToSection(target);
+
+                // Force scroll position to stay the same
+                window.scrollTo(0, currentScroll);
+
+                // Use requestAnimationFrame to ensure scroll stays put
+                requestAnimationFrame(() => {
+                    window.scrollTo(0, currentScroll);
+                });
             });
         });
     }
 
     navigateToSection(sectionId) {
-        // Update URL hash
-        window.location.hash = sectionId;
+        // Update URL hash without triggering scroll using history API
+        history.pushState(null, null, '#' + sectionId);
 
         // Update active states
         this.updateActiveStates(sectionId);
@@ -61,8 +74,8 @@ class App {
             section.classList.remove('active');
         });
 
-        // Show the target section
-        const targetSection = document.getElementById(sectionId);
+        // Show the target section using data attribute
+        const targetSection = document.querySelector(`[data-section="${sectionId}"]`);
         if (targetSection) {
             targetSection.classList.add('active');
             this.currentSection = sectionId;
